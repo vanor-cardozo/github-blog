@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SearchContainer = styled.div`
   width: 100%;
   max-width: 1120px;
-  margin: 5rem auto;
+  margin: 3rem auto;
 
   span {
     display: flex;

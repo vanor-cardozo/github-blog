@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import logoImg from '../../assets/cover.svg'
+import logoImg from '../../assets/cover.png'
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -13,5 +13,6 @@ export const HeaderContainer = styled.header`
   img {
     display: flex;
     width: 148px;
+    margin-top: -5rem;
   }
 `
