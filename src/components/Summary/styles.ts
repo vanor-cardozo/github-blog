@@ -13,7 +13,12 @@ export const SummaryContainer = styled.section`
   background: ${(props) => props.theme['base-profile']};
   border-radius: 10px;
 `
-export const SummaryAvatar = styled.div``
+export const SummaryAvatar = styled.div`
+  img {
+    width: 148px;
+    border-radius: 8px;
+  }
+`
 
 export const SummaryDiv = styled.div``
 
@@ -29,11 +34,12 @@ export const SummaryHeader = styled.div`
     line-height: 3rem;
   }
 
-  span {
+  a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
+    text-decoration: none;
     color: ${(props) => props.theme.blue};
   }
 `

@@ -7,45 +7,77 @@ import {
   SummaryHeader,
 } from './styles'
 
-import AVATAR from '../../assets/avatar.png'
 import gitIcon from '../../assets/icons/github-icon.svg'
 import companyIcon from '../../assets/icons/company-icon.svg'
 import followersIcon from '../../assets/icons/followers-icon.svg'
 import linkIcon from '../../assets/icons/link-icon.svg'
+import { useEffect, useState } from 'react'
+import { api } from '../../lib/axios'
+
+interface UserInfo {
+  name: String
+  bio: String
+  avatar_url: String
+  login: String
+  company: String
+  followers: Number
+  html_url: String
+}
 
 export function Summary() {
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    bio: '',
+    avatar_url: '',
+    login: '',
+    company: '',
+    followers: '',
+    html_url: '',
+  })
+
+  useEffect(() => {
+    api.get('/users/vanor-cardozo').then((response) => {
+      const { name, bio, avatar_url, login, company, followers, html_url } =
+        response.data
+      setUserInfo({
+        name,
+        bio,
+        avatar_url,
+        login,
+        company,
+        followers,
+        html_url,
+      })
+    })
+  }, [])
+
   return (
     <SummaryContainer>
       <SummaryAvatar>
-        <img src={AVATAR} alt="" />
+        <img src={userInfo.avatar_url} alt="" />
       </SummaryAvatar>
       <SummaryDiv>
         <SummaryHeader>
-          <h1>Cameron Williamson</h1>
-          <span>
-            GITHUB
-            <img src={linkIcon} alt="" />
-          </span>
+          <h1>{userInfo.name}</h1>
+          <a href={userInfo.html_url}>
+            GITHUB <img src={linkIcon} alt="" />{' '}
+          </a>
         </SummaryHeader>
         <SummaryBody>
-          <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-            viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-            volutpat pulvinar vel mass.
-          </p>
+          <p>{userInfo.bio}</p>
         </SummaryBody>
         <SummaryFooter>
           <span>
             <img src={gitIcon} alt="" />
-            cameronwill
+            {userInfo.login}
           </span>
           <span>
             <img src={companyIcon} alt="" />
-            Company
+            {userInfo.company}
           </span>
           <span>
             <img src={followersIcon} alt="" />
-            32 seguidores
+            {`${userInfo.followers} seguidores`}
           </span>
         </SummaryFooter>
       </SummaryDiv>
