@@ -1,36 +1,21 @@
+import { useContext } from 'react'
+import { BlogPostsContext } from '../../context/BlogPostsContext'
 import { CardContainer, CardDiv } from './styles'
 
 export function BlogCard() {
+  const { posts } = useContext(BlogPostsContext)
+  console.log('dentro do componente card', posts)
   return (
     <CardContainer>
-      <CardDiv>
-        <span>
-          <h3>JavaScript data types and data structures</h3>
-          <p>Há 1 dia</p>
-        </span>
-        <p>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn.
-        </p>
-      </CardDiv>
-      <CardDiv>
-        <span>
-          <h3>JavaScript data types and data structures</h3>
-          <p>Há 1 dia</p>
-        </span>
-        <p>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn.
-        </p>
-      </CardDiv>
+      {posts.map((post) => (
+        <CardDiv key={post.id}>
+          <span>
+            <h3>{post.title}</h3>
+            <p>{post.updated_at}</p>
+          </span>
+          <p>{post.body}</p>
+        </CardDiv>
+      ))}
     </CardContainer>
   )
 }
