@@ -25,13 +25,13 @@ interface UserInfo {
 }
 
 export function Summary() {
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo, setUserInfo] = useState<UserInfo>({
     name: '',
     bio: '',
     avatar_url: '',
     login: '',
     company: '',
-    followers: '',
+    followers: 0,
     html_url: '',
   })
 

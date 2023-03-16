@@ -20,7 +20,9 @@ export const SummaryAvatar = styled.div`
   }
 `
 
-export const SummaryDiv = styled.div``
+export const SummaryDiv = styled.div`
+  width: 100%;
+`
 
 export const SummaryHeader = styled.div`
   display: flex;
