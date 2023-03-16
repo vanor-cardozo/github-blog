@@ -7,12 +7,12 @@ import {
   SummaryHeader,
 } from './styles'
 
-import gitIcon from '../../assets/icons/github-icon.svg'
-import companyIcon from '../../assets/icons/company-icon.svg'
-import followersIcon from '../../assets/icons/followers-icon.svg'
-import linkIcon from '../../assets/icons/link-icon.svg'
+import gitIcon from '../../../../assets/icons/github-icon.svg'
+import companyIcon from '../../../../assets/icons/company-icon.svg'
+import followersIcon from '../../../../assets/icons/followers-icon.svg'
+import linkIcon from '../../../../assets/icons/link-icon.svg'
 import { useEffect, useState } from 'react'
-import { api } from '../../lib/axios'
+import { api } from '../../../../lib/axios'
 
 interface UserInfo {
   name: String

@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { BlogPostsContext } from '../../context/BlogPostsContext'
+import { BlogPostsContext } from '../../../../context/BlogPostsContext'
 import { CardContainer, CardDiv } from './styles'
 
 export function BlogCard() {
   const { posts } = useContext(BlogPostsContext)
-  console.log('dentro do componente card', posts)
+
   return (
     <CardContainer>
       {posts.map((post) => (

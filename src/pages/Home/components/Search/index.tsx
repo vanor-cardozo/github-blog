@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { BlogPostsContext } from '../../context/BlogPostsContext'
+import { BlogPostsContext } from '../../../../context/BlogPostsContext'
 import { InputAndButtonDiv, SearchContainer } from './styles'
 
 export function Search() {

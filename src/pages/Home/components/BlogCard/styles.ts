@@ -16,6 +16,13 @@ export const CardDiv = styled.div`
   background: ${(props) => props.theme['base-post']};
   overflow: hidden !important;
   text-overflow: ellipsis;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: ${(props) => props.theme['base-border']};
+    transform: scale(1.01);
+    cursor: pointer;
+  }
 
   span {
     display: grid;
