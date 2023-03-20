@@ -4,6 +4,7 @@ import { PostSummary } from './components/PostSummary'
 import { BlogPostContainer } from './styles'
 import { api } from '../../lib/axios'
 import { useParams } from 'react-router-dom'
+import { Header } from '../../components/Header'
 
 export function BlogPost() {
   const [postDetail, setPostDetail] = useState({})
@@ -24,6 +25,7 @@ export function BlogPost() {
 
   return isLoaded ? (
     <BlogPostContainer>
+      <Header />
       <PostSummary postData={postDetail} />
       <PostBody postData={postDetail} />
     </BlogPostContainer>

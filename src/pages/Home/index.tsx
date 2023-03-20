@@ -1,4 +1,4 @@
-// import { Header } from '../../components/Header'
+import { Header } from '../../components/Header'
 import { useContext, useEffect } from 'react'
 import { BlogPostsContext } from '../../context/BlogPostsContext'
 import { BlogCard } from './components/BlogCard'
@@ -15,7 +15,7 @@ export function Home() {
 
   return (
     <HomeContainer>
-      {/* <Header /> */}
+      <Header />
       <Summary />
       <Search />
       <BlogCard />
