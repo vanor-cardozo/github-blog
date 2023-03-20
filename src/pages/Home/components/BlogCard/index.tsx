@@ -4,6 +4,7 @@ import { BlogPostsContext } from '../../../../context/BlogPostsContext'
 import { CardContainer, CardDiv } from './styles'
 
 import { formatDate } from '../../../../utils/formatDate'
+import ReactMarkdown from 'react-markdown'
 
 export function BlogCard() {
   const { filteredPosts } = useContext(BlogPostsContext)
@@ -22,7 +23,7 @@ export function BlogCard() {
             <h3>{post.title}</h3>
             <p>{formatDate(post.updated_at)}</p>
           </span>
-          <p>{post.body}</p>
+          <ReactMarkdown children={post.body} />
         </CardDiv>
       ))}
     </CardContainer>

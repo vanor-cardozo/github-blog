@@ -40,7 +40,18 @@ export const CardDiv = styled.div`
   }
 
   p {
-    margin-top: 1.5rem;
-    color: ${(props) => props.theme['base-text']};
+    p + p {
+      text-indent: 1.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: ${(props) => props.theme.blue};
+      font-weight: bold;
+    }
+
+    h3 {
+      line-height: 4rem;
+    }
   }
 `
