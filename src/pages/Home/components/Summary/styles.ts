@@ -43,6 +43,10 @@ export const SummaryHeader = styled.div`
     font-size: 0.875rem;
     text-decoration: none;
     color: ${(props) => props.theme.blue};
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 
