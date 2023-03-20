@@ -2,7 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
 
 interface Post {
-  id: Number
+  number: Number
   title: String
   body: String
   updated_at: String
@@ -15,12 +15,15 @@ interface BlogProviderProps {
 interface BlogPostsContextType {
   posts: Post[]
   getData: (searchInput: String) => Promise<void>
+  filteredPosts: Post[]
+  setFilteredPosts: any
 }
 
 export const BlogPostsContext = createContext({} as BlogPostsContextType)
 
 export function BlogPostsProvider({ children }: BlogProviderProps) {
   const [posts, setPosts] = useState<Post[]>([])
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([])
 
   async function getData(searchInput?: String) {
     const query = searchInput
@@ -33,6 +36,7 @@ export function BlogPostsProvider({ children }: BlogProviderProps) {
       },
     })
     setPosts(result.data.items)
+    setFilteredPosts(result.data.items)
   }
 
   useEffect(() => {
@@ -44,6 +48,8 @@ export function BlogPostsProvider({ children }: BlogProviderProps) {
       value={{
         posts,
         getData,
+        setFilteredPosts,
+        filteredPosts,
       }}
     >
       {children}

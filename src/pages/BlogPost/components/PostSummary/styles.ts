@@ -23,33 +23,38 @@ export const PostSummaryHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  h1 {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: ${(props) => props.theme.white};
-    line-height: 3rem;
-  }
-
   a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
+    font-weight: bold;
     text-decoration: none;
     color: ${(props) => props.theme.blue};
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 
 export const PostSummaryBody = styled.div`
   display: flex;
   color: ${(props) => props.theme['base-text']};
+
+  h1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: ${(props) => props.theme['base-title']};
+    line-height: 4rem;
+  }
 `
 
 export const PostSummaryFooter = styled.div`
   display: flex;
   align-items: center;
   gap: 3rem;
-  margin-top: 1.5rem;
 
   span {
     display: flex;

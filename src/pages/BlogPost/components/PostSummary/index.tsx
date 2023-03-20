@@ -11,33 +11,43 @@ import linkIcon from '../../../../assets/icons/link-icon.svg'
 import gitIcon from '../../../../assets/icons/github-icon.svg'
 import calendarIcon from '../../../../assets/icons/calendar-icon.svg'
 import commentsIcon from '../../../../assets/icons/comments-icon.svg'
+import { useNavigate } from 'react-router-dom'
 
-export function PostSummary() {
+import { formatDate } from '../../../../utils/formatDate'
+
+export function PostSummary({ postData }) {
+  const navigate = useNavigate()
+
+  const goHome = () => {
+    navigate('/')
+  }
+
   return (
     <PostSummaryContainer>
       <PostSummaryDiv>
         <PostSummaryHeader>
-          <a href="">
+          <a onClick={() => goHome()}>
             <img src={returnIcon} alt="" /> VOLTAR
           </a>
-          <a href="">
+          <a href={postData.html_url} target="_blank" rel="noreferrer">
             VER NO GITHUB <img src={linkIcon} alt="" />{' '}
           </a>
         </PostSummaryHeader>
         <PostSummaryBody>
-          <p>TITULO DO POST</p>
+          <h1>{postData.title}</h1>
         </PostSummaryBody>
         <PostSummaryFooter>
           <span>
             <img src={gitIcon} alt="" />
-            vanor-cardozo
+            {postData.user.login}
           </span>
           <span>
             <img src={calendarIcon} alt="" />
-            Há 1 dia
+            {formatDate(postData.updated_at)}
           </span>
           <span>
-            <img src={commentsIcon} alt="" />5 comentários
+            <img src={commentsIcon} alt="" />
+            {`${postData.comments} comentários`}
           </span>
         </PostSummaryFooter>
       </PostSummaryDiv>
