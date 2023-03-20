@@ -15,6 +15,7 @@ interface BlogProviderProps {
 interface BlogPostsContextType {
   posts: Post[]
   getData: (searchInput: String) => Promise<void>
+  resetFilteredPosts: () => Promise<void>
   filteredPosts: Post[]
   setFilteredPosts: any
 }
@@ -39,6 +40,10 @@ export function BlogPostsProvider({ children }: BlogProviderProps) {
     setFilteredPosts(result.data.items)
   }
 
+  async function resetFilteredPosts() {
+    setFilteredPosts(posts)
+  }
+
   useEffect(() => {
     getData()
   }, [])
@@ -50,6 +55,7 @@ export function BlogPostsProvider({ children }: BlogProviderProps) {
         getData,
         setFilteredPosts,
         filteredPosts,
+        resetFilteredPosts,
       }}
     >
       {children}

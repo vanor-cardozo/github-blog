@@ -29,7 +29,7 @@ export const InputAndButtonDiv = styled.div`
     }
   }
 
-  button {
+  /* button {
     position: absolute;
     transform: translate(-75px);
     margin-top: 1.4rem;
@@ -44,5 +44,5 @@ export const InputAndButtonDiv = styled.div`
     &:hover {
       background: ${(props) => props.theme['base-post']};
     }
-  }
+  } */
 `

@@ -1,17 +1,26 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { BlogPostsContext } from '../../../../context/BlogPostsContext'
 import { CardContainer, CardDiv } from './styles'
 
+import { formatDate } from '../../../../utils/formatDate'
+
 export function BlogCard() {
-  const { posts } = useContext(BlogPostsContext)
+  const { filteredPosts } = useContext(BlogPostsContext)
+
+  const navigate = useNavigate()
+
+  const goPost = (postId: Number) => {
+    navigate(`/blog-post/${postId}`)
+  }
 
   return (
     <CardContainer>
-      {posts.map((post) => (
-        <CardDiv key={post.id}>
+      {filteredPosts.map((post) => (
+        <CardDiv key={post.id} onClick={() => goPost(post.number)}>
           <span>
             <h3>{post.title}</h3>
-            <p>{post.updated_at}</p>
+            <p>{formatDate(post.updated_at)}</p>
           </span>
           <p>{post.body}</p>
         </CardDiv>
