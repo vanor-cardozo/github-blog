@@ -59,7 +59,7 @@ export function Summary() {
       <SummaryDiv>
         <SummaryHeader>
           <h1>{userInfo.name}</h1>
-          <a href={userInfo.html_url}>
+          <a href={userInfo.html_url} target="_blank" rel="noreferrer">
             GITHUB <img src={linkIcon} alt="" />{' '}
           </a>
         </SummaryHeader>
