@@ -1,11 +1,17 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../lib/axios";
 
-interface Post {
-  number: Number;
-  title: String;
-  body: String;
-  updated_at: String;
+export interface Post {
+  id: string;
+  number: number;
+  title: string;
+  body: string;
+  updated_at: string;
+  html_url: string;
+  user: {
+    login: string;
+  };
+  comments: number;
 }
 
 interface BlogProviderProps {
@@ -14,7 +20,7 @@ interface BlogProviderProps {
 
 interface BlogPostsContextType {
   posts: Post[];
-  getData: (searchInput: String) => Promise<void>;
+  getData: (searchInput: string) => Promise<void>;
   resetFilteredPosts: () => Promise<void>;
   filteredPosts: Post[];
   setFilteredPosts: any;
@@ -26,7 +32,7 @@ export function BlogPostsProvider({ children }: BlogProviderProps) {
   const [posts, setPosts] = useState<Post[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
-  async function getData(searchInput?: String) {
+  async function getData(searchInput?: string) {
     const query = searchInput
       ? `${searchInput}repo:vanor-cardozo/github-blog`
       : "repo:vanor-cardozo/github-blog";

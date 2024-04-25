@@ -1,6 +1,6 @@
 {
   "homepage": "https://vanor-cardozo.github.io/github-blog",
-  "name": "03c-ignite-github-blog",
+  "name": "github-blog",
   "private": true,
   "version": "0.0.0",
   "type": "module",

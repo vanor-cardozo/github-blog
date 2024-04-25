@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   SummaryAvatar,
   SummaryBody,
@@ -5,40 +6,40 @@ import {
   SummaryDiv,
   SummaryFooter,
   SummaryHeader,
-} from './styles'
+} from "./styles";
 
-import gitIcon from '../../../../assets/icons/github-icon.svg'
-import companyIcon from '../../../../assets/icons/company-icon.svg'
-import followersIcon from '../../../../assets/icons/followers-icon.svg'
-import linkIcon from '../../../../assets/icons/link-icon.svg'
-import { useEffect, useState } from 'react'
-import { api } from '../../../../lib/axios'
+import gitIcon from "../../../../assets/icons/github-icon.svg";
+import companyIcon from "../../../../assets/icons/company-icon.svg";
+import followersIcon from "../../../../assets/icons/followers-icon.svg";
+import linkIcon from "../../../../assets/icons/link-icon.svg";
+import { useEffect, useState } from "react";
+import { api } from "../../../../lib/axios";
 
 interface UserInfo {
-  name: String
-  bio: String
-  avatar_url: String
-  login: String
-  company: String
-  followers: Number
-  html_url: String
+  name: string;
+  bio: string;
+  avatar_url: string;
+  login: string;
+  company: string;
+  followers: number;
+  html_url: string;
 }
 
 export function Summary() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    name: '',
-    bio: '',
-    avatar_url: '',
-    login: '',
-    company: '',
+    name: "",
+    bio: "",
+    avatar_url: "",
+    login: "",
+    company: "",
     followers: 0,
-    html_url: '',
-  })
+    html_url: "",
+  });
 
   useEffect(() => {
-    api.get('/users/vanor-cardozo').then((response) => {
+    api.get("/users/vanor-cardozo").then((response) => {
       const { name, bio, avatar_url, login, company, followers, html_url } =
-        response.data
+        response.data;
       setUserInfo({
         name,
         bio,
@@ -47,9 +48,9 @@ export function Summary() {
         company,
         followers,
         html_url,
-      })
-    })
-  }, [])
+      });
+    });
+  }, []);
 
   return (
     <SummaryContainer>
@@ -60,7 +61,7 @@ export function Summary() {
         <SummaryHeader>
           <h1>{userInfo.name}</h1>
           <a href={userInfo.html_url} target="_blank" rel="noreferrer">
-            GITHUB <img src={linkIcon} alt="" />{' '}
+            GITHUB <img src={linkIcon} alt="" />{" "}
           </a>
         </SummaryHeader>
         <SummaryBody>
@@ -82,5 +83,5 @@ export function Summary() {
         </SummaryFooter>
       </SummaryDiv>
     </SummaryContainer>
-  )
+  );
 }

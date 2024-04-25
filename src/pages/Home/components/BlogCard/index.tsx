@@ -11,7 +11,7 @@ export function BlogCard() {
 
   const navigate = useNavigate();
 
-  const goPost = (postId: Number) => {
+  const goPost = (postId: number) => {
     navigate(`/github-blog/blog-post/${postId}`);
   };
 

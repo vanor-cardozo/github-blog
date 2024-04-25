@@ -14,8 +14,13 @@ import commentsIcon from "../../../../assets/icons/comments-icon.svg";
 import { useNavigate } from "react-router-dom";
 
 import { formatDate } from "../../../../utils/formatDate";
+import { Post } from "../../../../context/BlogPostsContext";
 
-export function PostSummary({ postData }) {
+interface PostSummaryProps {
+  postData: Post;
+}
+
+export function PostSummary({ postData }: PostSummaryProps) {
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -30,7 +35,7 @@ export function PostSummary({ postData }) {
             <img src={returnIcon} alt="" /> VOLTAR
           </a>
           <a href={postData.html_url} target="_blank" rel="noreferrer">
-            VER NO GITHUB <img src={linkIcon} alt="" />{" "}
+            VER NO GITHUB <img src={linkIcon} alt="" />
           </a>
         </PostSummaryHeader>
         <PostSummaryBody>

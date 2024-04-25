@@ -5,13 +5,23 @@ import { BlogPostContainer } from "./styles";
 import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { Post } from "../../context/BlogPostsContext";
 
 export function BlogPost() {
-  const [postDetail, setPostDetail] = useState({});
+  const [postDetail, setPostDetail] = useState<Post>({
+    id: "",
+    number: 0,
+    title: "",
+    body: "",
+    updated_at: "",
+    html_url: "",
+    user: { login: "" },
+    comments: 0,
+  });
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
 
-  async function getPostById(issueID: Number) {
+  async function getPostById(issueID: string) {
     const result = await api.get(
       `/repos/vanor-cardozo/github-blog/issues/${issueID}`
     );
@@ -20,8 +30,10 @@ export function BlogPost() {
   }
 
   useEffect(() => {
-    getPostById(id);
-  }, []);
+    if (id) {
+      getPostById(id);
+    }
+  }, [id]);
 
   return isLoaded ? (
     <BlogPostContainer>
