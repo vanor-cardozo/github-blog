@@ -1,19 +1,19 @@
-import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { BlogPostsContext } from '../../../../context/BlogPostsContext'
-import { CardContainer, CardDiv } from './styles'
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { BlogPostsContext } from "../../../../context/BlogPostsContext";
+import { CardContainer, CardDiv } from "./styles";
 
-import { formatDate } from '../../../../utils/formatDate'
-import ReactMarkdown from 'react-markdown'
+import { formatDate } from "../../../../utils/formatDate";
+import ReactMarkdown from "react-markdown";
 
 export function BlogCard() {
-  const { filteredPosts } = useContext(BlogPostsContext)
+  const { filteredPosts } = useContext(BlogPostsContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const goPost = (postId: Number) => {
-    navigate(`/blog-post/${postId}`)
-  }
+    navigate(`/github-blog/blog-post/${postId}`);
+  };
 
   return (
     <CardContainer>
@@ -27,5 +27,5 @@ export function BlogCard() {
         </CardDiv>
       ))}
     </CardContainer>
-  )
+  );
 }

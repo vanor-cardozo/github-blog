@@ -1,52 +1,52 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
-import { api } from '../lib/axios'
+import { createContext, ReactNode, useEffect, useState } from "react";
+import { api } from "../lib/axios";
 
 interface Post {
-  number: Number
-  title: String
-  body: String
-  updated_at: String
+  number: Number;
+  title: String;
+  body: String;
+  updated_at: String;
 }
 
 interface BlogProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 interface BlogPostsContextType {
-  posts: Post[]
-  getData: (searchInput: String) => Promise<void>
-  resetFilteredPosts: () => Promise<void>
-  filteredPosts: Post[]
-  setFilteredPosts: any
+  posts: Post[];
+  getData: (searchInput: String) => Promise<void>;
+  resetFilteredPosts: () => Promise<void>;
+  filteredPosts: Post[];
+  setFilteredPosts: any;
 }
 
-export const BlogPostsContext = createContext({} as BlogPostsContextType)
+export const BlogPostsContext = createContext({} as BlogPostsContextType);
 
 export function BlogPostsProvider({ children }: BlogProviderProps) {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
   async function getData(searchInput?: String) {
     const query = searchInput
-      ? `${searchInput}repo:vanor-cardozo/03c-ignite-github-blog`
-      : 'repo:vanor-cardozo/03c-ignite-github-blog'
+      ? `${searchInput}repo:vanor-cardozo/github-blog`
+      : "repo:vanor-cardozo/github-blog";
 
-    const result = await api.get('/search/issues', {
+    const result = await api.get("/search/issues", {
       params: {
         q: query,
       },
-    })
-    setPosts(result.data.items)
-    setFilteredPosts(result.data.items)
+    });
+    setPosts(result.data.items);
+    setFilteredPosts(result.data.items);
   }
 
   async function resetFilteredPosts() {
-    setFilteredPosts(posts)
+    setFilteredPosts(posts);
   }
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
 
   return (
     <BlogPostsContext.Provider
@@ -60,5 +60,5 @@ export function BlogPostsProvider({ children }: BlogProviderProps) {
     >
       {children}
     </BlogPostsContext.Provider>
-  )
+  );
 }
